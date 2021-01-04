@@ -42,7 +42,7 @@ export const removeExpense = ({id} ={}) => ({
     type: 'REMOVE_EXPENSE',
     id
 });
-
+//asynchonize action below to get it going with firebase
 export const startRemoveExpense = ({id} = {}) => {
     return (dispatch) => {
         return database.ref(`expenses/${id}`).remove().then(() => {
@@ -63,6 +63,20 @@ export const editExpense = (id, updates) => ({
     updates
 });
 
+//asynchonize action below to get it going with firebase..the RETURN is important or it doesnt work
+export const startEditExpense = (id, updates) => {
+    return (dispatch) => {
+        return database.ref(`expenses/${id}`).update(updates).then(() => {
+            dispatch(editExpense(id, updates));
+        });
+    };
+};
+
+//Expense editing wiring to firebase:
+// Step 1: create startEditExpense (same call signature as removeExpense)
+// Step 2: Test startEditExpense with "should edit expenses with firebase"
+//Step 3: use startEditExpense with in EditExpensePage instead of editExpense
+
 //SET_EXPENSES
 
 export const setExpenses = (expenses) => ({
@@ -70,11 +84,9 @@ export const setExpenses = (expenses) => ({
     expenses
 });
 
-//Steps 
-// 1. Fetch all expense data once 
-//2. Parse the data into an array 
-//3. Dispatch SET_EXPENSES for the data actually changes
 
+
+//asynchonize action below to get it going with firebase
 export const startSetExpenses = () => {
     return (dispatch) => {
         return database.ref('expenses').once('value').then((snapshot) => {
@@ -91,5 +103,7 @@ export const startSetExpenses = () => {
     };
 };
 
-
-
+//Steps wiring set expenses to firebase
+// 1. Fetch all expense data once 
+//2. Parse the data into an array 
+//3. Dispatch SET_EXPENSES for the data actually changes

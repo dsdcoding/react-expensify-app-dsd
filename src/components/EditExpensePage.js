@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {addExpense} from '../actions/expenses';
 
 import ExpenseForm from './ExpenseForm.js';
-import {editExpense, startRemoveExpense} from '../actions/expenses';
+import {startEditExpense, startRemoveExpense} from '../actions/expenses';
 
 const EditExpensePage = (props) => {
     return (
@@ -13,7 +13,7 @@ const EditExpensePage = (props) => {
                 expense={props.expense}
                 onSubmit={(expense) => {
                     //Dispatch the action to edit the expense once the user changed it
-                    props.dispatch(editExpense(props.expense.id, expense));
+                    props.dispatch(startEditExpense(props.expense.id, expense));
                     //Redirect back to dashboard
                     props.history.push('/');
                 }}
