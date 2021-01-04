@@ -17,7 +17,10 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-export { firebase, database as default};
+//to add the google provider for sign-in
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
+
+export { firebase, googleAuthProvider, database as default};
 
 // NOTES TO LEARN: 
 // //child_removed .. this is where when there is a removed to one of the items in the database, it notifies
