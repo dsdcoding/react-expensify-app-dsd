@@ -1,0 +1,13 @@
+//this file is toggle visibility and only for a mobile and a desktop
+
+.show-for-mobile {
+    @media (min-width: $desktop-breakpoint){
+        display: none;
+    }
+}
+
+.show-for-desktop {
+    @media (max-width: $desktop-breakpoint - 0.1rem){
+        display: none;
+    }
+}

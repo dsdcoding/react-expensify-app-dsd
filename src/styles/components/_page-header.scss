@@ -1,0 +1,18 @@
+.page-header {
+    background: $off-white;
+    padding: $l-size 0;  ///the 0 is for the left and right
+    margin-bottom: $l-size;
+}
+
+.page-header__actions{
+    margin-top: $m-size;
+}
+
+.page-header__title {
+    margin: 0;
+    font-weight: 300;
+} span{
+    font-weight: 700;
+}
+
+//span is to has styling within a line
